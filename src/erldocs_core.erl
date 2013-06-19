@@ -133,7 +133,7 @@ gen_docsrc(AppDir, SrcFiles, Dest) ->
 
     lists:foldl(fun(File, Acc) ->
       log("Generating XML - ~s~n", [bname(File, ".erl")]),
-      case (catch docb_gen:module(File, Opts)) of
+      case (catch edoc:file(File, Opts)) of
           ok ->
               [filename:join([Dest, bname(File, ".erl")]) ++ ".xml"|Acc];
           Error ->
